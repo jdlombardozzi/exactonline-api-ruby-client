@@ -20,8 +20,10 @@ module Elmas
 
     def refresh_authorization
       OauthResponse.new(get_refresh_token(self.refresh_token)).tap do |response|
-        self.access_token = response.access_token
-        self.refresh_token = response.refresh_token
+        Elmas.configure do |config|
+          config.access_token = response.access_token
+          config.refresh_token = response.refresh_token
+        end
       end
     end
 
