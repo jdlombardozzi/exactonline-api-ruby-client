@@ -57,7 +57,7 @@ module Elmas
       options[:response_type] ||= "code"
       options[:redirect_uri] ||= redirect_uri
       params = authorization_params.merge(options)
-      uri = URI(config[:base_url] + "/api/oauth2/auth/")
+      uri = URI("#{config[:base_url]}/api/oauth2/auth/")
       uri.query = URI.encode_www_form(params)
       uri.to_s
     end
